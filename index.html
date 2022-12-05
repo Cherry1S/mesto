@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
+</head>
+
+<body class="page">
+  <div class="popup">
+    <form class="popup__container">
+      <button type="button" class="popup__close button-transparent"><img class="popup__close-icon" src="./images/CloseButton.png"
+          alt="Кнопка «Закрыть»"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input id="text-input-first" type="text" class="popup__input-text">
+      <input id="text-input-second"type="text" class="popup__input-text">
+      <input type="submit" class="popup__input-submit" value="Сохранить">
+      </form>
+  </div>
+
+  <div class="page__container">
+    <header class="header page__header">
+      <img src="./images/header-logo.svg" alt="Логотип сайта" class="header__logo">
+    </header>
+    <main class="content page__content">
+      <section class="profile content__profile">
+        <div class="profile__info">
+          <img class="profile__image" src="./images/Avatar.png" alt="Аватар">
+          <div class="profile__info-textbox">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button button-transparent" type="button"><img
+                class="profile__edit-button-image" src="./images/EditButton.png" alt="Кнопка «Редактировать»"></button>
+            <p class="profile__job">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__add-button button-transparent" type="button"><img class="profile__add-button-image"
+            src="./images/AddButton.png" alt="Кнопка «Добавить»"></button>
+      </section>
+      <section class="elements content__elements">
+        <ul class="elements__grid">
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image1.jpg" alt="Фото Карачаевска">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Карачаевск</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image2.jpg" alt="Фото Горы Эльбрус">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Гора Эльбрус</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image3.jpg" alt="Фото Домбай">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Домбай</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image2.jpg" alt="Фото Горы Эльбрус">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Гора Эльбрус</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image3.jpg" alt="Фото Карачаевска">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Домбай</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img class="elements__card-image" src="./images/image1.jpg" alt="Фото Карачаевска">
+            <div class="elements__text-container">
+              <p class="elements__card-text">Карачаевск-Тыгыдык</p>
+              <button class="button-transparent" type="button"><img class="elements__card-like"
+                  src="./images/LikeButton.png" alt="Кнопка лайка"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer page__footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+
+</html>

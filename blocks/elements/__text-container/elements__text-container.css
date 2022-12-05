@@ -1,0 +1,9 @@
+.elements__text-container {
+  min-height: 80px;
+  box-sizing: border-box;
+  display: flex;
+  padding: 30px 20px 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #FFF;
+}
