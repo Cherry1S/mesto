@@ -11,7 +11,7 @@
   transition: ease .2s;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .popup__close{
     max-width: 20px;
     max-height: 20px;

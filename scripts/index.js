@@ -15,8 +15,11 @@ function handleFormSubmit (evt) {
 }
 
 function togglePopup() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+  if (popup.classList.contains('popup_opened') === false) {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+  }
+
   popup.classList.toggle('popup_opened');
 }
 

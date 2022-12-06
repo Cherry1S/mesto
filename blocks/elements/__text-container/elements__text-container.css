@@ -1,9 +1,8 @@
 .elements__text-container {
-  min-height: 80px;
   box-sizing: border-box;
   display: flex;
-  padding: 30px 20px 0;
+  padding: 25px 20px;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   background-color: #FFF;
 }

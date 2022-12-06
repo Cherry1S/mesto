@@ -8,6 +8,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  border: 0;
 }
 
 .popup__input-submit:hover {
@@ -15,10 +16,18 @@
   transition: ease .5s;
 }
 
+@media screen and (max-width: 500px) {
+  .popup__input-submit {
+    min-width: 100%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .popup__input-submit {
     margin: 45px auto 0;
     min-width: 238px;
     min-height: 46px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
