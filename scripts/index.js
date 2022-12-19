@@ -86,15 +86,12 @@ function togglePopupAdd() {
     placeInput.setAttribute('placeholder', 'Название');
     linkInput.setAttribute('placeholder', 'Ссылка на картинку');
   }
-
   linkInput.value = '';
   placeInput.value = '';
   popupAdd.classList.toggle('popup_opened');
 }
 
 function togglePopupView() {
-
-
   popupView.classList.toggle('image-popup_opened');
 }
 
