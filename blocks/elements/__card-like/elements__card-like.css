@@ -2,9 +2,10 @@
   max-width: 22px;
   max-height: 19px;
   padding: 0;
+  transition: ease 0.5s;
 }
 
 .elements__card-like:hover {
-  opacity: 0.5;
-  transition: ease 0.5s;
+  opacity: .5;
+  transition: ease .5s;
 }

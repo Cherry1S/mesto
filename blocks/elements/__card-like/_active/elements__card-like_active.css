@@ -1,0 +1,8 @@
+.elements__card-like_active {
+  margin: 0;
+  padding: 0;
+}
+
+.elements__card-like_active:hover {
+  opacity: 1;
+}

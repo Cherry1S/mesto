@@ -13,6 +13,7 @@
 
 .popup__input-submit:hover {
   opacity: .8;
+  cursor: pointer;
   transition: ease .5s;
 }
 
