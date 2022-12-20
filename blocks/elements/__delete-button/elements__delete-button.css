@@ -2,4 +2,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  transition: ease 0.5s;
+}
+
+.elements__delete-button:hover {
+  opacity: .5;
+  transition: ease .5s;
 }

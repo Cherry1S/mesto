@@ -1,4 +1,7 @@
 .elements__card-like {
+  background-image: url(../../../images/LikeButton.svg);
+  background-repeat: no-repeat;
+  border: 0;
   max-width: 22px;
   max-height: 19px;
   padding: 0;
