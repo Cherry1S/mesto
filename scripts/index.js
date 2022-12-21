@@ -53,10 +53,6 @@ function openPopupAdd() {
   openPopup(popupAdd);
 }
 
-function likeCard(name) {
-    name.classList.toggle('elements__card-like_active');
-}
-
 function viewCard(link, title) {
   popupImageCaption.textContent = title;
   popupImage.src = link;
@@ -75,7 +71,7 @@ function createCard(title, link) {
   imageButton.alt = title;
 
   removeButton.addEventListener('click', () => elementsCard.remove());
-  likeButton.addEventListener('click', () => likeCard(likeButton));
+  likeButton.addEventListener('click', () => likeButton.classList.toggle('elements__card-like_active'));
   imageButton.addEventListener('click', () => viewCard(link, title));
 
   return elementsCard;
