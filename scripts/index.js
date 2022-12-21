@@ -12,9 +12,7 @@ const nameInput = document.getElementById('text-input-name')
 const jobInput = document.getElementById('text-input-job')
 const placeInput = document.getElementById('text-input-place')
 const linkInput = document.getElementById('text-input-link')
-const formCloseButtonEdit = document.getElementById('edit-close-button')
-const formCloseButtonAdd = document.getElementById('add-close-button')
-const imageCloseButton = document.getElementById('image-close-button')
+const buttonCloseList = document.querySelectorAll('.popup__close')
 const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
@@ -24,8 +22,8 @@ function openPopup(popupName) {
   popupName.classList.add('popup_opened');
 }
 
-function closePopup(popupName) {
-  popupName.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 function handleFormSubmitEdit (evt) {
@@ -55,9 +53,8 @@ function openPopupAdd() {
   openPopup(popupAdd);
 }
 
-function removeCard(deleteButton) {
-  card = deleteButton.closest('.elements__card');
-  card.remove();
+function removeCard(elementsCard) {
+  elementsCard.remove();
 }
 
 function likeCard(name) {
@@ -81,7 +78,7 @@ function createCard(title, link) {
   imageButton.src = link;
   imageButton.alt = title;
 
-  removeButton.addEventListener('click', () => removeCard(removeButton));
+  removeButton.addEventListener('click', () => removeCard(elementsCard));
   likeButton.addEventListener('click', () => likeCard(likeButton));
   imageButton.addEventListener('click', () => viewCard(link, title));
 
@@ -102,9 +99,10 @@ loadCards(initialCards);
 
 formEditButton.addEventListener('click', openPopupEdit);
 formAddButton.addEventListener('click', openPopupAdd);
-formCloseButtonEdit.addEventListener('click', () => closePopup(popupEdit));
-formCloseButtonAdd.addEventListener('click', () => closePopup(popupAdd));
-imageCloseButton.addEventListener('click', () => closePopup(popupView));
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(popup));
+})
 
