@@ -1,3 +1,12 @@
+const validationConfig = {
+  formSelector: '.popup__form',
+  fieldsetSelector: '.popup__set',
+  inputSelector: '.popup__input-text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input-text_type_error',
+  errorClass: 'popup__input-text-error_active'
+};
 const popupEdit = document.getElementById('popup-edit')
 const popupAdd = document.getElementById('popup-add')
 const popupView = document.getElementById('popup-view')
@@ -17,16 +26,47 @@ const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
 const templateCard = document.getElementById('template-card').content
+const allInputs = document.querySelectorAll('.popup__input-text');
+const allErrorMessages = document.querySelectorAll('.popup__input-text-error');
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
+  }
+}
+
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target)
+    }
+}
+
+function cleanInputs() {
+  allInputs.forEach(input => {
+    input.classList.remove('popup__input-text_type_error');
+  })
+
+  allErrorMessages.forEach(message => {
+    message.classList.remove('popup__input-text-error_active');
+  })
+}
 
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  popupName.addEventListener('click', closePopupOverlay);
+  cleanInputs();
+  enableValidation(validationConfig);
 }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  popupName.removeEventListener('click', closePopupOverlay);
 }
 
-function handleFormSubmitEdit (evt) {
+function handleFormSubmitEdit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -88,7 +128,6 @@ function loadCards(cards) {
 }
 
 loadCards(initialCards);
-
 formEditButton.addEventListener('click', openPopupEdit);
 formAddButton.addEventListener('click', openPopupAdd);
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
@@ -98,3 +137,4 @@ buttonCloseList.forEach(btn => {
   btn.addEventListener('click', () => closePopup(popup));
 })
 
+enableValidation(validationConfig);
