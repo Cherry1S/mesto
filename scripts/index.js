@@ -43,7 +43,7 @@ function cleanErrorInputs() {
   })
 }
 
-function resetForm() {
+function resetForms() {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((formElement) => {
     formElement.reset()
@@ -59,6 +59,7 @@ function openPopup(popupName) {
 
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
+  resetForms();
   document.removeEventListener('keydown', closePopupEsc);
 }
 
@@ -81,11 +82,6 @@ function openPopupEdit() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popupEdit);
-}
-
-function openPopupAdd() {
-  resetForm();
-  openPopup(popupAdd);
 }
 
 function viewCard(link, title) {
@@ -123,7 +119,7 @@ function loadCards(cards) {
 }
 
 formEditButton.addEventListener('click', openPopupEdit);
-formAddButton.addEventListener('click', openPopupAdd);
+formAddButton.addEventListener('click', () => openPopup(popupAdd));
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 buttonCloseList.forEach(btn => {
