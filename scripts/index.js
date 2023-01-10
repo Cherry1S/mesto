@@ -43,7 +43,7 @@ function cleanErrorInputs() {
   })
 }
 
-function resetForms() {
+function resetForm() {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((formElement) => {
     formElement.reset()
@@ -54,7 +54,6 @@ function openPopup(popupName) {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
   cleanErrorInputs();
-  resetForms();
   enableValidation(validationConfig);
 }
 
@@ -84,11 +83,10 @@ function openPopupEdit() {
   openPopup(popupEdit);
 }
 
-// function openPopupAdd() {
-//   linkInput.value = '';
-//   placeInput.value = '';
-//   openPopup(popupAdd);
-// }
+function openPopupAdd() {
+  resetForm();
+  openPopup(popupAdd);
+}
 
 function viewCard(link, title) {
   popupImageCaption.textContent = title;
@@ -125,7 +123,7 @@ function loadCards(cards) {
 }
 
 formEditButton.addEventListener('click', openPopupEdit);
-formAddButton.addEventListener('click', () => openPopup(popupAdd));
+formAddButton.addEventListener('click', openPopupAdd);
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 buttonCloseList.forEach(btn => {
