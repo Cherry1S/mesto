@@ -24,3 +24,15 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  fieldsetSelector: '.popup__set',
+  inputSelector: '.popup__input-text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input-text_type_error',
+  errorClass: 'popup__input-text-error_active'
+};
+
+const closePopupKey = 'Escape'
