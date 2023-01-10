@@ -33,7 +33,7 @@ function closePopupOverlay(evt) {
     }
 }
 
-function cleanInputs() {
+function cleanErrorInputs() {
   allInputs.forEach(input => {
     input.classList.remove('popup__input-text_type_error');
   })
@@ -41,7 +41,9 @@ function cleanInputs() {
   allErrorMessages.forEach(message => {
     message.classList.remove('popup__input-text-error_active');
   })
+}
 
+function resetForms() {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((formElement) => {
     formElement.reset()
@@ -51,7 +53,8 @@ function cleanInputs() {
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  cleanInputs();
+  cleanErrorInputs();
+  resetForms();
   enableValidation(validationConfig);
 }
 
