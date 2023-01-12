@@ -39,7 +39,7 @@ function openPopup(popupName) {
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-  resetForms();
+  resetForm(popupName);
 }
 
 function handleFormSubmitEdit(evt) {
