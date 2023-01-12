@@ -17,8 +17,6 @@ const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
 const templateCard = document.getElementById('template-card').content
-const allInputs = document.querySelectorAll('.popup__input-text');
-const allErrorMessages = document.querySelectorAll('.popup__input-text-error');
 
 function closePopupEsc(evt) {
   if (evt.key === closePopupKey) {
@@ -33,34 +31,15 @@ function closePopupOverlay(evt) {
     }
 }
 
-function cleanErrorInputs() {
-  allInputs.forEach(input => {
-    input.classList.remove('popup__input-text_type_error');
-  })
-
-  allErrorMessages.forEach(message => {
-    message.classList.remove('popup__input-text-error_active');
-  })
-}
-
-function resetForms() {
-  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
-  formList.forEach((formElement) => {
-    formElement.reset()
-    });
-}
-
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  cleanErrorInputs();
-  enableValidation(validationConfig);
 }
 
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
-  resetForms();
   document.removeEventListener('keydown', closePopupEsc);
+  resetForms();
 }
 
 function handleFormSubmitEdit(evt) {

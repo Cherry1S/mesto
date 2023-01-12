@@ -1,3 +1,7 @@
+const allInputs = document.querySelectorAll('.popup__input-text');
+const allErrorMessages = document.querySelectorAll('.popup__input-text-error');
+const allSubmits = document.querySelectorAll('.popup__submit');
+
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -13,6 +17,28 @@ const hideInputError = (formElement, inputElement, config) => {
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
 };
+
+function resetForms() {
+  allInputs.forEach(input => {
+    input.classList.remove(validationConfig.inputErrorClass);
+  })
+
+  allErrorMessages.forEach(message => {
+    message.classList.remove(validationConfig.errorClass);
+  })
+
+  allSubmits.forEach(button => {
+    if (!button.classList.contains(validationConfig.inactiveButtonClass)) {
+      button.classList.add(validationConfig.inactiveButtonClass);
+      button.disabled = true;
+    }
+
+  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+  formList.forEach((formElement) => {
+    formElement.reset()
+    });
+  })
+}
 
 const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
@@ -38,14 +64,14 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  const buttonElement = formElement.querySelector(config.submitButtonSelector)
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
   toggleButtonState(inputList, buttonElement, config)
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config)
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
