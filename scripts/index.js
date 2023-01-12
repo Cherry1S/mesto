@@ -18,11 +18,21 @@ const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
 const templateCard = document.getElementById('template-card').content
 
-function closePopupEsc(evt) {
-  if (evt.key === closePopupKey) {
-    const popup = document.querySelector('.popup_opened')
-    closePopup(popup);
-  }
+function openPopup(popupName) {
+  popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+}
+
+function resetForm(popupName) {
+  const container = popupName.querySelector(validationConfig.containerSelector)
+  const form = container.querySelector(validationConfig.formSelector)
+  form.reset();
+}
+
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  resetForm(popupName);
 }
 
 function closePopupOverlay(evt) {
@@ -31,15 +41,11 @@ function closePopupOverlay(evt) {
     }
 }
 
-function openPopup(popupName) {
-  popupName.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEsc);
-}
-
-function closePopup(popupName) {
-  popupName.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEsc);
-  resetForm(popupName);
+function closePopupEsc(evt) {
+  if (evt.key === closePopupKey) {
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup);
+  }
 }
 
 function handleFormSubmitEdit(evt) {
