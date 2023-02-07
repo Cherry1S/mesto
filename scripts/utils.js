@@ -4,6 +4,7 @@ function openPopup(popupName) {
 }
 
 function openPopupEdit() {
+  formElementEdit.reset();
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popupEdit);
