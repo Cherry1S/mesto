@@ -19,7 +19,6 @@ function closePopupEsc(evt) {
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-  resetForm(popupName);
 }
 
 function closePopupOverlay(evt) {
@@ -28,10 +27,4 @@ function closePopupOverlay(evt) {
   }
 }
 
-function resetForm(popupName) {
-  const container = popupName.querySelector(validationConfig.containerSelector)
-  const form = container.querySelector(validationConfig.formSelector)
-  form.reset();
-}
-
-export { openPopup, openPopupEdit, closePopupEsc, closePopup, resetForm, closePopupOverlay }
+export { openPopup, openPopupEdit, closePopupEsc, closePopup, closePopupOverlay }

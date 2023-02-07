@@ -1,5 +1,5 @@
 import Card from './Card.js'
-import { openPopup, openPopupEdit, closePopupEsc, closePopup, resetForm, closePopupOverlay } from './utils.js'
+import { openPopup, openPopupEdit, closePopupEsc, closePopup, closePopupOverlay } from './utils.js'
 import FormValidator from './FormValidator.js'
 
 function addCard(title, link, templateSelector) {
@@ -12,13 +12,14 @@ function handleFormSubmitEdit(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   closePopup(popupEdit);
+  evt.target.reset();
 }
 
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
-
   addCard(placeInput.value, linkInput.value, 'template-card');
   closePopup(popupAdd);
+  evt.target.reset();
 }
 
 function loadCards(cards) {
@@ -28,7 +29,10 @@ function loadCards(cards) {
 }
 
 formEditButton.addEventListener('click', openPopupEdit);
-formAddButton.addEventListener('click', () => openPopup(popupAdd));
+formAddButton.addEventListener('click', () => {
+  openPopup(popupAdd);
+  formElementAdd.reset()
+});
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 buttonCloseList.forEach(btn => {
@@ -40,5 +44,9 @@ buttonCloseList.forEach(btn => {
 loadCards(initialCards);
 
 //Для включения валидатора для формы используется ID
-new FormValidator(validationConfig, 'form-add').enableValidation();
-new FormValidator(validationConfig, 'form-edit').enableValidation();
+const enableValidator = (config, form) => { new FormValidator(config, form).enableValidation() };
+enableValidator(validationConfig, 'form-add');
+enableValidator(validationConfig, 'form-edit')
+
+// new FormValidator(validationConfig, 'form-add').enableValidation();
+// new FormValidator(validationConfig, 'form-edit').enableValidation();
