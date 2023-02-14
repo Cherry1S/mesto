@@ -1,10 +1,11 @@
-import { openPopup } from './utils.js'
+import Popup from "./Popup.js";
 
 export default class Card {
-  constructor(title, link, templateSelector) {
+  constructor(title, link, templateSelector, handleCardClick) {
     this._title = title;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   };
 
   _getTemplate = () => {
@@ -37,13 +38,6 @@ export default class Card {
     evt.target.classList.toggle('elements__card-like_active')
   }
 
-  _viewCardImage = () => {
-    popupImageCaption.textContent = this._title;
-    popupImage.src = this._link;
-    popupImage.alt = this._title;
-    openPopup(popupView);
-  }
-
   _setEventListeners = () => {
     this._elementsCard
       .querySelector('.elements__delete-button')
@@ -53,6 +47,6 @@ export default class Card {
       .addEventListener('click', this._likeCard)
     this._elementsCard
       .querySelector('.elements__card-image')
-      .addEventListener('click', () => this._viewCardImage(this._title, this._link))
+      .addEventListener('click', () => { this._handleCardClick(this._title, this._link) })
   };
 }
