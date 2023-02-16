@@ -32,6 +32,7 @@ export default class Card {
 
   _removeCard = () => {
     this._elementsCard.remove()
+    this._elementsCard = null;
   }
 
   _likeCard = (evt) => {

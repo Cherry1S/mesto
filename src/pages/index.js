@@ -5,13 +5,19 @@ import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import { nameInput, jobInput, placeInput, linkInput, formEditButton, formAddButton,
-  elementsGrid, initialCards, validationConfig } from '../utils/constants.js';
+import {
+  nameInput, jobInput, placeInput, linkInput, formEditButton, formAddButton,
+  elementsGrid, initialCards, validationConfig
+} from '../utils/constants.js';
 import './index.css';
 
+function addCard(title, link, templateSelector, handleCardClick) {
+  //Для выбора template используется ID
+  return elementsGrid.prepend(new Card(title, link, templateSelector, handleCardClick).generateCard());
+}
 
 function handleCardClick(title, link) {
-  new PopupWithImage('popup-view', title, link).open();
+  popupView.open(title, link);
 }
 
 const enableValidator = (config, form) => { new FormValidator(config, form).enableValidation() };
@@ -24,24 +30,18 @@ const cardsList = new Section({
 },
   '.elements__grid'
 );
-const handleInfo = new UserInfo('.profile__title', '.profile__job')
+const userInfo = new UserInfo('.profile__title', '.profile__job')
+const popupView = new PopupWithImage('popup-view');
 const formEdit = new PopupWithForm({
   selector: 'popup-edit',
-  handleSubmitForm: (evt) => {
-    evt.preventDefault();
-    const newInfo = formEdit._getInputValues();
-    handleInfo.setUserInfo(newInfo);
-    formEdit.close();
-    evt.target.reset();
+  handleSubmitForm: (newInfo) => {
+    userInfo.setUserInfo(newInfo);
   }
 });
 const formAdd = new PopupWithForm({
   selector: 'popup-add',
-  handleSubmitForm: (evt) => {
-    evt.preventDefault();
-    elementsGrid.prepend(new Card(placeInput.value, linkInput.value, 'template-card', handleCardClick).generateCard());
-    formAdd.close();
-    evt.target.reset();
+  handleSubmitForm: (newCard) => {
+    addCard(newCard.place, newCard.link, 'template-card', handleCardClick);
   }
 });
 
@@ -49,15 +49,15 @@ formAddButton.addEventListener('click', () => {
   formAdd.open();
 });
 formEditButton.addEventListener('click', () => {
-  formEdit.open();
-  const oldInfo = handleInfo.getUserInfo();
+  const oldInfo = userInfo.getUserInfo();
   nameInput.value = oldInfo.name;
   jobInput.value = oldInfo.job;
+  formEdit.open();
 });
 
 formAdd.setEventListeners();
 formEdit.setEventListeners();
-new Popup('popup-view').setEventListeners();
+popupView.setEventListeners();
 cardsList.renderItems();
 enableValidator(validationConfig, 'form-add');
 enableValidator(validationConfig, 'form-edit');

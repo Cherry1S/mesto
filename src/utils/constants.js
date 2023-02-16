@@ -5,6 +5,8 @@ const linkInput = document.getElementById('text-input-link')
 const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
+const popupImage = document.querySelector('.popup__image')
+const popupImageCaption = document.querySelector('.popup__image-caption')
 const closePopupKey = 'Escape'
 
 const initialCards = [
@@ -45,5 +47,5 @@ const validationConfig = {
 
 export {
   nameInput, jobInput, placeInput, linkInput, formEditButton, formAddButton, elementsGrid,
-  closePopupKey, initialCards, validationConfig
+  closePopupKey, initialCards, validationConfig, popupImage, popupImageCaption
 }
