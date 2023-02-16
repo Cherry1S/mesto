@@ -1,12 +1,11 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import {
-  nameInput, jobInput, placeInput, linkInput, formEditButton, formAddButton,
+  nameInput, jobInput, formEditButton, formAddButton,
   elementsGrid, initialCards, validationConfig
 } from '../utils/constants.js';
 import './index.css';
@@ -49,10 +48,10 @@ formAddButton.addEventListener('click', () => {
   formAdd.open();
 });
 formEditButton.addEventListener('click', () => {
+  formEdit.open();
   const oldInfo = userInfo.getUserInfo();
   nameInput.value = oldInfo.name;
   jobInput.value = oldInfo.job;
-  formEdit.open();
 });
 
 formAdd.setEventListeners();

@@ -1,7 +1,5 @@
 const nameInput = document.getElementById('text-input-name')
 const jobInput = document.getElementById('text-input-job')
-const placeInput = document.getElementById('text-input-place')
-const linkInput = document.getElementById('text-input-link')
 const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const elementsGrid = document.querySelector('.elements__grid')
@@ -46,6 +44,6 @@ const validationConfig = {
 };
 
 export {
-  nameInput, jobInput, placeInput, linkInput, formEditButton, formAddButton, elementsGrid,
+  nameInput, jobInput, formEditButton, formAddButton, elementsGrid,
   closePopupKey, initialCards, validationConfig, popupImage, popupImageCaption
 }
