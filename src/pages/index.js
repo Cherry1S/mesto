@@ -6,13 +6,13 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import {
   nameInput, jobInput, formEditButton, formAddButton,
-  elementsGrid, initialCards, validationConfig
+  initialCards, validationConfig
 } from '../utils/constants.js';
 import './index.css';
 
-function addCard(title, link, templateSelector, handleCardClick) {
-  //Для выбора template используется ID
-  return elementsGrid.prepend(new Card(title, link, templateSelector, handleCardClick).generateCard());
+
+function createCard(title, link, templateSelector, handleCardClick) {
+  return new Card(title, link, templateSelector, handleCardClick).generateCard();
 }
 
 function handleCardClick(title, link) {
@@ -23,14 +23,14 @@ const enableValidator = (config, form) => { new FormValidator(config, form).enab
 const cardsList = new Section({
   items: initialCards,
   renderer: ({ name, link }) => {
-    const card = new Card(name, link, 'template-card', handleCardClick).generateCard()
-    cardsList.addItem(card)
+    const card = createCard(name, link, 'template-card', handleCardClick);
+    cardsList.addItem(card);
   }
 },
   '.elements__grid'
 );
-const userInfo = new UserInfo('.profile__title', '.profile__job')
-const popupView = new PopupWithImage('popup-view');
+const userInfo = new UserInfo('.profile__title', '.profile__job');
+const popupView = new PopupWithImage('popup-view', '.popup__image', '.popup__image-caption');
 const formEdit = new PopupWithForm({
   selector: 'popup-edit',
   handleSubmitForm: (newInfo) => {
@@ -39,8 +39,9 @@ const formEdit = new PopupWithForm({
 });
 const formAdd = new PopupWithForm({
   selector: 'popup-add',
-  handleSubmitForm: (newCard) => {
-    addCard(newCard.place, newCard.link, 'template-card', handleCardClick);
+  handleSubmitForm: (newCardInfo) => {
+    const newCard = createCard(newCardInfo.place, newCardInfo.link, 'template-card', handleCardClick);
+    cardsList.addItem(newCard);
   }
 });
 
