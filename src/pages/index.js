@@ -7,7 +7,7 @@ import PopupCardDelete from '../components/PopupCardDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import {
-  nameInput, aboutInput, profileName, profileAbout, avatar, formEditButton, formAddButton, formAvatarButton, validationConfig
+  nameInput, aboutInput, formEditButton, formAddButton, formAvatarButton, validationConfig
 } from '../utils/constants.js';
 import { renderLoading } from '../utils/utils.js';
 import './index.css';
@@ -64,8 +64,7 @@ const formEdit = new PopupWithForm({
     renderLoading(submitButton, 'Сохранение...');
     api.changeUserInfo(newInfo.name, newInfo.about)
       .then((newInfo) => {
-        profileName.textContent = newInfo.name;
-        profileAbout.textContent = newInfo.about;
+        userInfo.setUserInfo(newInfo)
         formEdit.close();
       })
       .catch((res) => {
@@ -162,7 +161,7 @@ const api = new Api({
 
 Promise.all([
   api.getInitialCards(),
-  api.getUserInfo()
+  api.getUser()
 ])
   .then((pageData) => {
     userId = pageData[1]._id;

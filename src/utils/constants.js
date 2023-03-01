@@ -3,10 +3,6 @@ const aboutInput = document.getElementById('text-input-about')
 const formEditButton = document.querySelector('.profile__edit-button')
 const formAddButton = document.querySelector('.profile__add-button')
 const formAvatarButton = document.querySelector('.profile__avatar-button')
-const profileName = document.querySelector('.profile__title')
-const profileAbout = document.querySelector('.profile__about')
-const avatar = document.querySelector('.profile__image')
-const userId = ''
 const closePopupKey = 'Escape'
 
 
@@ -20,6 +16,6 @@ const validationConfig = {
 };
 
 export {
-  nameInput, aboutInput, formEditButton, formAddButton, formAvatarButton, profileName, profileAbout, avatar, userId,
+  nameInput, aboutInput, formEditButton, formAddButton, formAvatarButton,
   closePopupKey, validationConfig
 }
