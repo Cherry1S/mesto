@@ -165,8 +165,8 @@ Promise.all([
   api.getUserInfo()
 ])
   .then((pageData) => {
-    cardsList.renderItems(pageData[0])
     userId = pageData[1]._id;
+    cardsList.renderItems(pageData[0]);
     userInfo.setUserInfo(pageData[1]);
     userInfo.setUserAvatar(pageData[1]);
   })

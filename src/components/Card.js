@@ -62,7 +62,7 @@ export default class Card {
   }
 
   toggleLike = (newData) => {
-    this._likes = newData.likes
+    this._likes = newData.likes;
     this._updateLikesView();
   }
 
