@@ -67,11 +67,16 @@ export default class Card {
   }
 
   _setEventListeners = () => {
-    this._likeButton.addEventListener('click', () => { this._handleLikeClick(this._cardId, this, this._isLiked()) })
-    this._elementsCardImage.addEventListener('click', () => { this._handleCardClick(this._title, this._link) })
-
+    this._likeButton.addEventListener('click', () => {
+      this._handleLikeClick(this._cardId, this, this._isLiked())
+    })
+    this._elementsCardImage.addEventListener('click', () => {
+      this._handleCardClick(this._title, this._link)
+    })
     if (this._owner._id === this._userId) {
-      this._deleteButton.addEventListener('click', () => { this._handleDeleteClick(this._cardId, this) })
+      this._deleteButton.addEventListener('click', () => {
+        this._handleDeleteClick(this._cardId, this)
+      })
     }
   };
 }

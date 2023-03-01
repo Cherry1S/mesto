@@ -33,16 +33,16 @@ function handleLikeClick(cardId, card, isLiked) {
       .then((newData) => {
         card.toggleLike(newData)
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
   } else {
     api.likeCard(cardId)
       .then((newData) => {
         card.toggleLike(newData)
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
   }
 }
@@ -67,8 +67,8 @@ const formEdit = new PopupWithForm({
         userInfo.setUserInfo(newInfo)
         formEdit.close();
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
       .finally(() => {
         renderLoading(submitButton, 'Сохранить')
@@ -84,8 +84,8 @@ const formAdd = new PopupWithForm({
         cardsList.addItem(createCard(cardData, userId, 'template-card', handleCardClick, handleDeleteClick, handleLikeClick))
         formAdd.close();
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
       .finally(() => {
         renderLoading(submitButton, 'Создать')
@@ -101,8 +101,8 @@ const formAvatar = new PopupWithForm({
         userInfo.setUserAvatar(profileInfo)
         formAvatar.close();
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
       .finally(() => {
         renderLoading(submitButton, 'Сохранить')
@@ -117,8 +117,8 @@ const popupDelete = new PopupCardDelete({
         card.removeCard()
         popupDelete.close()
       })
-      .catch((res) => {
-        console.log(res)
+      .catch((err) => {
+        console.log(err)
       })
   }
 });
@@ -169,6 +169,6 @@ Promise.all([
     userInfo.setUserInfo(pageData[1]);
     userInfo.setUserAvatar(pageData[1]);
   })
-  .catch((res) => {
-    console.log(res)
+  .catch((err) => {
+    console.log(err)
   })
